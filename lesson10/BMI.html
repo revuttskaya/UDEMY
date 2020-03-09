@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI</title>
+</head>
+<body>
+  <script>
+      "use strict";
+
+      var heightMark = prompt('Write height of Mark (in meters)');
+      var massMark = prompt('Write mass of Mark (in kilos)');
+
+      var heightJohn = prompt('Write height of John (in meters)');
+      var massJohn = prompt('Write mass of John (in kilos)');
+
+      var bmiMark = massMark / (heightMark * heightMark);
+      console.log(bmiMark);
+
+      var bmiJohn = massJohn / (heightJohn * heightJohn);
+      console.log(bmiJohn);
+
+      var markHigherBmi = bmiMark > bmiJohn;
+
+      console.log('Is Mark\'s BMI higher than John\'s? ' + markHigherBmi);
+  </script>
+</body>
+</html>
