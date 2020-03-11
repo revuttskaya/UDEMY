@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basketball Game</title>
+</head>
+<body>
+  <script>
+      'use strict';
+
+      var JohnScore1 = 89;
+      var JohnScore2 = 120;
+      var JohnScore3 = 10;
+
+      var JohnAverageScore = (JohnScore1 + JohnScore2 + JohnScore3) / 3;
+
+      var MikeScore1 = 890;
+      var MikeScore2 = 120;
+      var MikeScore3 = 10;
+
+      var MikeAverageScore = (MikeScore1 + MikeScore2 + MikeScore3) / 3;
+
+      if (JohnAverageScore > MikeAverageScore) {
+          console.log('John\'s team is better. Their average score is ' + JohnAverageScore);
+      } else if (MikeAverageScore > JohnAverageScore) {
+          console.log('Mike\'s team is better. Their average score is ' + MikeAverageScore);
+      } else {
+          console.log('Friendship wins!!!')
+      }
+
+      var MaryScore1 = 890;
+      var MaryScore2 = 120;
+      var MaryScore3 = 10;
+
+      var MaryAverageScore = (MaryScore1 + MaryScore2 + MaryScore3) / 3;
+
+      if (MaryAverageScore > MikeAverageScore && MaryAverageScore > JohnAverageScore) {
+          console.log('Mary wins! Her average score is ' + MaryAverageScore);
+      } else if (JohnAverageScore > MikeAverageScore && JohnAverageScore > MaryAverageScore) {
+          console.log('John wins! His average score is ' + JohnAverageScore);
+      } else if (MikeAverageScore > JohnAverageScore && MikeAverageScore > MaryAverageScore) {
+          console.log('Mike wins! His average score is ' + MikeAverageScore);
+      } else {
+          console.log('Friendship wins!!!' + MaryAverageScore + ' ' + JohnAverageScore + ' ' + MikeAverageScore);
+      }
+
+  </script>
+</body>
+</html>
