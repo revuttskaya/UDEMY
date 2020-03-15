@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculate BMI</title>
+</head>
+<body>
+  <script>
+      'use strict';
+
+      var john = {
+          firstName: 'John',
+          mass: 75,
+          height: 1.80,
+          calcBmi: function () {
+              return this.bmi = this.mass / (this.height * this.height);
+          }
+      };
+
+      john.calcBmi();
+      console.log(john);
+
+      var mark = {
+          firstName: 'Mark',
+          mass: 70,
+          height: 1.80,
+          calcBmi: function () {
+              return this.bmi = this.mass / (this.height * this.height);
+          }
+      };
+
+      mark.calcBmi();
+      console.log(mark);
+
+      if (john.bmi > mark.bmi) {
+          console.log(john.firstName + ' has higher BMI. It is ' + john.bmi);
+      } else if (mark.bmi > john.bmi) {
+          console.log(mark.firstName + ' has higher BMI. It is ' + mark.bmi);
+      } else {
+          console.log('BMIs are equal!')
+      }
+
+  </script>
+</body>
+</html>
