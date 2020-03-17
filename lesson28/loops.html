@@ -8,7 +8,7 @@
   <script>
       'use strict';
 
-      var rest = {
+      var john = {
           bills: [124, 48, 268, 180, 42],
           tips: [],
           totals: [],
@@ -30,10 +30,54 @@
           }
       };
 
-      rest.calcTips();
-      rest.calcTotals();
-      console.log(rest);
+      john.calcTips();
+      john.calcTotals();
+      console.log(john);
 
+      var mark = {
+          bills: [77, 375, 110, 45],
+          tips: [],
+          totals: [],
+          calcTips: function () {
+              for (var i = 0; i < this.bills.length; i++) {
+                  if (this.bills[i] < 100) {
+                      this.tips[i] = this.bills[i] * .2;
+                  } else if (this.bills[i] >= 100 && this.bills[i] < 300) {
+                      this.tips[i] = this.bills[i] * .1;
+                  } else {
+                      this.tips[i] = this.bills[i] * .25;
+                  }
+              }
+          },
+          calcTotals: function () {
+              for (var i = 0; i < this.bills.length; i++) {
+                  this.totals[i] = this.bills[i] + this.tips[i];
+              }
+          }
+      };
+
+      mark.calcTips();
+      mark.calcTotals();
+      console.log(mark);
+
+      function averageTip(tips) {
+          var sum = 0;
+          for (var i = 0; i < tips.length; i++) {
+              sum += tips[i];
+          }
+          return sum / tips.length;
+      }
+
+      var averTipJohn = averageTip(john.tips);
+      var averTipMark = averageTip(mark.tips);
+
+      if (averTipJohn > averTipMark) {
+          console.log('John wins! his average tip is ' + averTipJohn);
+      } else if (averTipMark > averTipJohn) {
+          console.log('Mark wins! his average tip is ' + averTipMark);
+      } else {
+          console.log('friendship wins!');
+      }
   </script>
 </body>
 </html>
