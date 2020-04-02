@@ -1,34 +1,31 @@
-/*
-GAME RULES:
-- The game has 2 players, playing in rounds
-- In each turn, a player rolls a dice as many times as he wishes. Each result get added to his ROUND score
-- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn
-- The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that, it's the next player's turn
-- The first player to reach 100 points on GLOBAL score wins the game
-*/
+// A player looses his entire score when  he rolls two 6 in a row. After that, it's the next player's turn.
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, dice, prevDice;
 
 init();
 
 document.querySelector('.btn-roll').addEventListener('click', function () {
     if (gamePlaying) {
         // 1. Random number
-        var dice = Math.floor(Math.random() * 6 + 1);
+        dice = Math.floor(Math.random() * 6 + 1);
 
         //2. Display result
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
 
-        //3. Update round score If the rolled number was not 1
-        if (dice !== 1) {
-            //Add score
+        //3. Update round score If the rolled number was NOT 1 and NOT the second 6 in a row
+        if (dice === 1) {
+            nextPlayer();
+        } else if (dice === 6 && prevDice === 6) {
+            scores[activePlayer] = 0;
+            document.getElementById('score-' + activePlayer).textContent = '0';
+            prevDice = 0;
+            nextPlayer();
+        } else {
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
-        } else {
-            //Next player
-            nextPlayer();
+            prevDice = dice;
         }
     }
 });
@@ -59,6 +56,8 @@ function nextPlayer() {
 //Next player
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
+    dice = 0;
+    prevDice = 0;
 
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
@@ -79,6 +78,8 @@ function init() {
     activePlayer = 0;
     roundScore = 0;
     gamePlaying = true;
+    dice = 0;
+    prevDice = 0;
 
     document.querySelector('.dice').style.display = 'none';
 
