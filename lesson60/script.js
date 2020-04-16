@@ -58,3 +58,29 @@ teacherQuestion('Mike');
 interviewQuestion('designer')('Jane');
 
 interviewQuestion('driver')('Sam');
+
+// Bind method
+
+var yearsOfBirth = [2000, 1963, 1937, 2005, 2002];
+
+function calcArray(arr, fn) {
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calcAges(el) {
+    return 2020 - el;
+}
+
+function isFullAges(limit, el) {
+    return el >= limit;
+}
+
+var age = calcArray(yearsOfBirth, calcAges);
+console.log(age);
+
+var fullAgeJapan = calcArray(age, isFullAges.bind(calcArray, 20));
+console.log(fullAgeJapan);
